@@ -30,8 +30,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    chunk_size = atoi(argv[1]);
-    if (chunk_size < 5 || chunk_size > 1000) {
+    char *endptr;
+    chunk_size = strtol(argv[1], &endptr, 10);
+    if (*endptr != '\0' || chunk_size < 5 || chunk_size > 1000) {
         fprintf(stderr, "Error: chunk_size must be between 5 and 1000\n");
         return 1;
     }
